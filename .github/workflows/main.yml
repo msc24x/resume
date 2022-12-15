@@ -12,4 +12,12 @@ jobs:
           root_file: resume.tex
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v3.1.1
+        with:
+          # Artifact name
+          name: Uploading the PDF resume
+          # A file, directory or wildcard pattern that describes what to upload
+          path: resume.pdf
+          # The desired behavior if no files are found using the provided path.
 
