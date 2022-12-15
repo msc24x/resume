@@ -1,0 +1,209 @@
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+%   \textbf{\href{http://sourabhbajaj.com/}{\Large Sourabh Bajaj}} & Email : \href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\
+%   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
+% \end{tabular*}
+
+\begin{center}
+    \textbf{\Huge \scshape Maninderpal Singh} \\ \vspace{1pt}
+    \small +91 78888 21718 $|$ \href{mailto:msc24x@gmail.com}{\underline{msc24x@gmail.com}} $|$ 
+    \href{https://linkedin.com/in/msc24x}{\underline{linkedin.com/in/msc24x}} $|$
+    \href{https://github.com/msc24x}{\underline{github.com/msc24x}}
+\end{center}
+
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Punjabi University}{Percentile 89.8\%}
+      {Department of Statistics | B.Sc. in Computer Science, Statistics \& Mathematics}{Jul. 2019 -- Jul. 2022}      
+  \resumeSubHeadingListEnd
+
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {\href{https://www.linkedin.com/company/studypaq/mycompany/}{Studypaq}}{Oct 2022 -- Present}
+      {Software Engineer}{California, US (Remote)}
+      \resumeItemListStart
+        \resumeItem{Fixed critical vulnerability in company's payment accessible core product}
+        \resumeItem{Took responsibility of designing and developing most of the APIs and backend architecture for MVP Studyplan feature}
+        \resumeItem{Improved highly used endpoints' response by ~47\% on average, improving initial server response time for SSR}
+      \resumeItemListEnd
+      
+% -----------Multiple Positions Heading-----------
+%    \resumeSubSubheading
+%     {Software Engineer I}{Oct 2014 - Sep 2016}
+%     \resumeItemListStart
+%        \resumeItem{Apache Beam}
+%          {Apache Beam is a unified model for defining both batch and streaming data-parallel processing pipelines}
+%     \resumeItemListEnd
+%    \resumeSubHeadingListEnd
+%-------------------------------------------
+
+  \resumeSubHeadingListEnd
+
+
+%-----------PROJECTS-----------
+\section{Projects}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{Hunter - Online contests hosting platform (SaaS)}}{Jan 2022 -- Sep 2022}
+      \resumeProjectHeading{\href{https://github.com/msc24x/hunter}{\emph{\underline{Repository}}} Deployed at \href{https://thehunter.tech}{\emph{\underline{thehunter.tech}}}}{}
+          \resumeItemListStart
+            \resumeItem{Leveraged Angular components and data binding along TypeScript to create portable responsive interfaces designed with HTML and SCSS}
+            \resumeItem{Implemented injectable angular services to consume app's REST services}
+            \resumeItem{Engineered the whole backend architecture and routes using express server and relational database MySQL}
+            \resumeItem{Built argon2 hash authentication routes based on server side session table and cookies}
+            \resumeItem{Wrote Python scripts to run inside Linux Docker Container that compiles, executes and test contestants' code securely and finitely, supporting C, C++, JavaScript and Python for now}
+            \resumeItem{Set up an NGINX server on Microsoft Azure Linux VM with Azure MySQL server to deploy Angular UI and API using Reverse Proxy}
+            \resumeItem{Managed custom domain name and SSL certificate for Azure VM}
+            \resumeItem{Implemented GitHub OAuth as a sign in option}
+          \resumeItemListEnd
+          
+    \resumeProjectHeading
+          {\textbf{BOP Music - Android Music Player}}{July 2021 -- Oct 2021}
+      \resumeProjectHeading{\href{https://github.com/lscambo13/GrooveMusicClone}{\emph{\underline{Repository}}}}{}
+          \resumeItemListStart
+            \resumeItem{Built extensive UX and dynamic UI with motion layouts, and custom components}
+            \resumeItem{Followed the principles of MVVM architecture}
+            \resumeItem{Implemented background player service with SQL room database}
+          \resumeItemListEnd
+          
+    \resumeProjectHeading
+          {\textbf{DinoPlusPlus - A Console Video Game}}{Apr 2021 -- May 2021}
+      \resumeProjectHeading{\href{https://github.com/msc24x/DinoPlusPlus}{\emph{\underline{Repository}}}}{}
+          \resumeItemListStart
+            \resumeItem{Programmed the entire gameplay mechanics, menu system \& animations without any specialised console game engine or code library}
+            \resumeItem{Fixed vertical frame desynchronization by delayed frame drawing until complete frame has been processed to output}
+            \resumeItem{Rendered block based ASCII graphics with accurate collision detection}
+          \resumeItemListEnd
+
+    \resumeProjectHeading
+          {\textbf{Contactless - WhatsApp’s API driven android app }}{Jul 2020 -- Aug 2020}
+      \resumeProjectHeading{\href{https://github.com/lscambo13/ContactlessForWhatsApp}{\emph{\underline{Repository}}},       \href{https://forum.xda-developers.com/android/apps-games/5-0-contactless-whatsapp-t4151497}{\emph{\underline{XDA Forum}}}}{}
+          \resumeItemListStart
+            \resumeItem{Developed UI/UX using Kotlin framework}
+            \resumeItem{Consumed Web API to redirect users to chat with the specified phone number}
+          \resumeItemListEnd
+          
+    \resumeSubHeadingListEnd
+
+%-----------PROGRAMMING SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Programming Languages }{: C/C++, Python, JavaScript/Typescript, Kotlin} \\
+     \textbf{Tools Technologies}{: Angular, NodeJs, MySQL, Git, Docker, Android-Studio, MS Excel} \\
+     \textbf{Technical }{: Operating-Systems, Statistics, Linear Programming, Object Oriented Design, data structures and algorithms} \\
+     \textbf{Soft Skills}{: Communication, Management, Presentation}
+    }}
+ \end{itemize}
+
+
+%-------------------------------------------
+\end{document}
