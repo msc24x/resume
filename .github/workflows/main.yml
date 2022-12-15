@@ -12,14 +12,4 @@ jobs:
           root_file: resume.tex
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
-      - name: bibtex main
-        uses: dante-ev/latex-action@latest
-        with:
-          root_file: resume.aux
-          compiler: bibtex
-      - name: pdflatex main
-        uses: dante-ev/latex-action@latest
-        with:
-          root_file: resume.tex
-          compiler: pdflatex
-          args: -interaction=nonstopmode -shell-escape
+
