@@ -25,7 +25,7 @@ jobs:
         # uses: swinton/commit@bfa68d879ec57187f2c5bf616158433763f05f06
         uses: swinton/commit@v2.0.0
         env:
-          GH_TOKEN : ${{secrets.GH_AUTH_TOKEN}}
+          GH_TOKEN : ${{secrets.GITHUB_TOKEN}}
         with:
           # Newline-separated list of files to be committed, relative to root of repository.
 
