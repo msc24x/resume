@@ -12,10 +12,14 @@ jobs:
           root_file: resume.tex
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
-      - name: Download a Build Artifact
-        uses: actions/download-artifact@v3.0.1
+      - name: bibtex main
+        uses: dante-ev/latex-action@latest
         with:
-          # Artifact name
-          name: resume.pdf
-          # Destination path
-          path: resume.pdf
+          root_file: resume.aux
+          compiler: bibtex
+      - name: pdflatex main
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: resume.tex
+          compiler: pdflatex
+          args: -interaction=nonstopmode -shell-escape
