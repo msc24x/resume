@@ -1,0 +1,38 @@
+name: Build LaTeX document
+on: [push]
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+      - name: pdflatex main
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: resume.tex
+          compiler: pdflatex
+          args: -interaction=nonstopmode -shell-escape
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v3.1.1
+        with:
+          # Artifact name
+          name: Uploading the PDF resume
+          # A file, directory or wildcard pattern that describes what to upload
+          path: resume.pdf
+          # The desired behavior if no files are found using the provided path.
+      - name: Commit PDF file to the repo
+        # You may pin to the exact commit or the version.
+        # uses: swinton/commit@bfa68d879ec57187f2c5bf616158433763f05f06
+        uses: swinton/commit@v2.0.0
+        env:
+          GH_TOKEN : ${{secrets.GITHUB_TOKEN}}
+        with:
+          # Newline-separated list of files to be committed, relative to root of repository.
+
+          files: resume.pdf
+          # Base directory containing files to be committed, defaults to the GitHub workspace directory path, $GITHUB_WORKSPACE.
+
+          commit-message: resume.pdf build update
+          # Reference to be updated with commit. This reference must already exist. Defaults to the repository's default branch ref.
+
+
