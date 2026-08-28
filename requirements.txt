@@ -1,2 +1,4 @@
 language_tool_python
 PyStemmer
+fastapi
+uvicorn
