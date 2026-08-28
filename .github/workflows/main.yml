@@ -2,13 +2,20 @@ name: Build LaTeX document
 
 on: [push]
 
+permissions:
+  contents: write
+
 jobs:
   build_latex:
     runs-on: ubuntu-latest
-
+    env:
+      SOURCE_DATE_EPOCH: "315532800"
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v4
+
+      - name: Generate LaTeX from JSON
+        run: python3 generate_resume.py
 
       - name: Compile LaTeX
         uses: dante-ev/latex-action@latest
@@ -23,10 +30,18 @@ jobs:
           name: resume-pdf
           path: resume.pdf
 
-      - name: Commit PDF to repo
-        uses: swinton/commit@v2.0.0
+      - name: Commit generated files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add resume.tex resume.pdf
+          # Only commit when resume.tex (deterministic from JSON) actually changed,
+          # to avoid re-triggering this workflow in a loop.
+          if git diff --staged --quiet -- resume.tex; then
+            echo "No resume.tex changes; skipping commit"
+          else
+            git commit -m "Update resume from JSON"
+            git push
+          fi
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          files: resume.pdf
-          commit-message: Update resume.pdf
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
