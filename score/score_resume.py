@@ -38,9 +38,15 @@ def stem_word(stemmer, word):
 
 def tokenize_text(text):
     text = text.lower()
-    text = re.sub(r'[^a-z0-9\s\+\#\.\/\-]', ' ', text)
     tokens = text.split()
-    return [t for t in tokens if t not in STOPWORDS and len(t) > 1]
+    result = []
+    for tok in tokens:
+        result.append(tok)
+        for part in re.split(r'[^a-z0-9]', tok):
+            if part:
+                result.append(part)
+    return [t for t in result
+            if t not in STOPWORDS and len(t) > 1 and re.search(r'[a-z0-9]', t)]
 
 
 def extract_bigrams(tokens):
@@ -106,27 +112,37 @@ def load_skills_map(path="skills_map.json"):
         return json.load(f)
 
 
-def build_resume_skills(resume_data):
-    skills = set()
-    skills_lower = {}
-    tech = resume_data.get("technical_skills", {})
-    for category, items in tech.items():
-        for item in items:
-            normalized = item.lower().strip()
-            skills.add(normalized)
-            skills_lower[normalized] = category
-    for exp in resume_data.get("experience", []):
-        for resp in exp.get("responsibilities", []):
-            parts = resp.split(": ", 1)
-            if len(parts) == 2:
-                skills.add(parts[0].lower().strip())
-    for proj in resume_data.get("projects", []):
-        skills.add(proj["name"].lower().strip())
-        for detail in proj.get("details", []):
-            parts = detail.split(": ", 1)
-            if len(parts) == 2:
-                skills.add(parts[0].lower().strip())
-    return skills, skills_lower
+def build_resume_skills(resume_data, stemmer, skills_map):
+    def collect_texts(data):
+        out = []
+        if isinstance(data, dict):
+            for v in data.values():
+                out.extend(collect_texts(v))
+        elif isinstance(data, list):
+            for v in data:
+                out.extend(collect_texts(v))
+        elif isinstance(data, str):
+            out.append(data)
+        return out
+
+    tokens = set()
+    for text in collect_texts(resume_data):
+        tokens.update(tokenize_text(text))
+
+    stemmed = {stem_word(stemmer, t): t for t in tokens}
+
+    skills_in_cat = {}
+    skills_category = {}
+    for cat, aliases in skills_map.items():
+        alias_stems = {stem_word(stemmer, a) for a in aliases}
+        cat_tokens = set()
+        for t in tokens:
+            if stem_word(stemmer, t) in alias_stems:
+                cat_tokens.add(t)
+                skills_category.setdefault(t, cat)
+        skills_in_cat[cat] = cat_tokens
+
+    return tokens, stemmed, skills_in_cat, skills_category
 
 
 def find_category(term, skills_map):
@@ -152,8 +168,9 @@ def fuzzy_match(term, candidates, threshold=0.85):
 def score_resume(resume_data, jd_text, skills_map):
     stemmer = Stemmer.Stemmer("english")
 
-    resume_skills, resume_skills_category = build_resume_skills(resume_data)
-    resume_stemmed = {stem_word(stemmer, s): s for s in resume_skills}
+    resume_skills, resume_stemmed, resume_skills_in_cat, resume_skills_category = build_resume_skills(
+        resume_data, stemmer, skills_map
+    )
 
     all_skill_aliases = set()
     for category, aliases in skills_map.items():
@@ -227,16 +244,7 @@ def score_resume(resume_data, jd_text, skills_map):
 
         cat = find_category(jd_token, skills_map)
         if cat:
-            cat_aliases = [a.lower() for a in skills_map[cat]]
-            resume_cat_skills = set()
-            for rs in resume_skills:
-                if resume_skills_category.get(rs, "") == cat:
-                    resume_cat_skills.add(rs.lower())
-                for alias in cat_aliases:
-                    rs_stem = stem_word(stemmer, rs)
-                    alias_stem = stem_word(stemmer, alias)
-                    if rs_stem == alias_stem:
-                        resume_cat_skills.add(rs.lower())
+            resume_cat_skills = {s.lower() for s in resume_skills_in_cat.get(cat, set())}
             if resume_cat_skills:
                 matched.append({
                     "term": jd_token,
@@ -326,6 +334,17 @@ def format_report(result, experience_info, skills_map, verbose=False, report_pat
     lines = []
     w = 60
 
+    stemmer = Stemmer.Stemmer("english")
+
+    def term_covered_in_category(term, resume_skill_strings):
+        term_stems = {stem_word(stemmer, t) for t in tokenize_text(term)}
+        if not term_stems:
+            return False
+        resume_stems = set()
+        for s in resume_skill_strings:
+            resume_stems.update(stem_word(stemmer, t) for t in tokenize_text(s))
+        return term_stems.issubset(resume_stems)
+
     score = result["score"]
     years, months = experience_info["your_experience"]
 
@@ -345,8 +364,8 @@ def format_report(result, experience_info, skills_map, verbose=False, report_pat
             if m["match_type"] == "category":
                 cat = m.get("category")
                 if cat:
-                    resume_lower = {s.lower() for s in result.get("resume_skills_in_cat", {}).get(cat, set())}
-                    if m["term"].lower() not in resume_lower:
+                    resume_lower = result.get("resume_skills_in_cat", {}).get(cat, set())
+                    if not term_covered_in_category(m["term"], resume_lower):
                         all_gaps.append(m["term"])
         if all_gaps:
             lines.append("")
@@ -430,8 +449,9 @@ def format_report(result, experience_info, skills_map, verbose=False, report_pat
         lines.append(f"    Your skills: {resume_matches_str}")
         lines.append(f"    Match type:  {types_str}")
         if info["category_only_terms"]:
-            resume_lower = {s.lower() for s in result.get("resume_skills_in_cat", {}).get(cat, set())}
-            not_owned = [t for t in sorted(info["category_only_terms"]) if t.lower() not in resume_lower]
+            resume_lower = result.get("resume_skills_in_cat", {}).get(cat, set())
+            not_owned = [t for t in sorted(info["category_only_terms"])
+                         if not term_covered_in_category(t, resume_lower)]
             if not_owned:
                 lines.append(f"    Gap:        {', '.join(not_owned)} — not in your resume, consider adding")
     lines.append("")

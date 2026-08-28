@@ -86,9 +86,9 @@ def build_links(links):
 def build_projects(projects):
     lines = [r'    \resumeSubHeadingListStart']
     for proj in projects:
-        date_range = format_date(proj['start_date'], proj['end_date'])
+        start_date = proj['start_date']
         title = f"{proj['name']} - {proj['description']}"
-        lines.append(f'      \\resumeProjectHeading{{{{\\textbf{{{escape_latex(title)}}}}}}}{{{escape_latex(date_range)}}}')
+        lines.append(f'      \\resumeProjectHeading{{{{\\textbf{{{escape_latex(title)}}}}}}}{{{escape_latex(start_date)}}}')
         links = proj.get('links', [])
         if links:
             lines.append('      \\resumeProjectHeading{' + build_links(links) + '}{}')
@@ -102,15 +102,17 @@ def build_projects(projects):
 def build_skills(skills):
     lang = ', '.join(skills['programming_scripting_languages'])
     tools = ', '.join(skills['tools_frameworks'])
-    tech = ', '.join(skills['technical'])
-    soft = ', '.join(skills['soft_skills'])
+    data = ', '.join(skills['data'])
+    cloud = ', '.join(skills['cloud_devops'])
+    core = ', '.join(skills['core_competencies'])
     return '\n'.join([
         r' \begin{itemize}[leftmargin=0.15in, label={}]',
         r'    \small{\item{',
         f'      \\textbf{{Languages:}} {escape_latex(lang)} \\\\',
         f'      \\textbf{{Tools/Frameworks:}} {escape_latex(tools)} \\\\',
-        f'      \\textbf{{Core Competencies:}} {escape_latex(tech)} \\\\',
-        f'      \\textbf{{Soft Skills:}} {escape_latex(soft)}',
+        f'      \\textbf{{Data:}} {escape_latex(data)} \\\\',
+        f'      \\textbf{{Cloud \& DevOps:}} {escape_latex(cloud)} \\\\',
+        f'      \\textbf{{Core Competencies:}} {escape_latex(core)} \\\\',
         r'    }}',
         r' \end{itemize}',
     ])

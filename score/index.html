@@ -118,6 +118,51 @@
 				gap: 6px;
 				cursor: pointer;
 			}
+			#refresh {
+				margin-left: auto;
+				cursor: pointer;
+				color: var(--fg);
+				font-size: 14px;
+				user-select: none;
+				line-height: 1;
+			}
+			#refresh:hover {
+				color: var(--accent);
+			}
+			#refresh.spin {
+				display: inline-block;
+				animation: spin 0.6s linear;
+			}
+			@keyframes spin {
+				from {
+					transform: rotate(0deg);
+				}
+				to {
+					transform: rotate(360deg);
+				}
+			}
+			.copy {
+				cursor: pointer;
+				color: var(--fg);
+				font-size: 14px;
+				user-select: none;
+				line-height: 1;
+			}
+			.copy:hover {
+				color: var(--accent);
+			}
+			#refresh {
+				margin-left: auto;
+			}
+			#copyResume {
+				margin-left: 8px;
+			}
+			#copyJd {
+				margin-left: auto;
+			}
+			#copyReport {
+				margin-left: auto;
+			}
 			textarea {
 				flex: 1;
 				resize: none;
@@ -158,7 +203,11 @@
 				class="pane"
 				id="resumePane"
 			>
-				<h2>resume_data.json</h2>
+				<h2>
+					resume_data.json
+					<span id="refresh" title="Reload from disk &amp; re-score">&#10227;</span>
+					<span class="copy" id="copyResume" title="Copy JSON">&#10697;</span>
+				</h2>
 				<textarea
 					id="resume"
 					spellcheck="false"
@@ -169,7 +218,10 @@
 				class="pane"
 				id="jdPane"
 			>
-				<h2>Job Description</h2>
+				<h2>
+					Job Description
+					<span class="copy" id="copyJd" title="Copy JD">&#10697;</span>
+				</h2>
 				<textarea
 					id="jd"
 					spellcheck="false"
@@ -182,6 +234,7 @@
 			>
 				<h2>
 					Score Report
+					<span class="copy" id="copyReport" title="Copy report">&#10697;</span>
 					<span class="opt" id="reportOpts">
 						<label
 							><input type="checkbox" id="auto" checked /> auto</label
@@ -293,6 +346,51 @@
 			$("jd").addEventListener("input", debouncedMaybe);
 			$("verbose").addEventListener("change", maybeRecalc);
 			$("save").addEventListener("click", save);
+
+			async function refreshResume() {
+				const icon = $("refresh");
+				icon.classList.remove("spin");
+				void icon.offsetWidth;
+				icon.classList.add("spin");
+				try {
+					const res = await fetch("/api/resume");
+					const data = await res.json();
+					if (data.ok) {
+						$("resume").value = data.content;
+						recalc();
+					}
+				} catch (e) {
+					console.error("Refresh failed:", e);
+				}
+			}
+			$("refresh").addEventListener("click", refreshResume);
+
+			async function copyText(text, btn) {
+				const original = btn.textContent;
+				try {
+					await navigator.clipboard.writeText(text);
+				} catch (e) {
+					const ta = document.createElement("textarea");
+					ta.value = text;
+					document.body.appendChild(ta);
+					ta.select();
+					document.execCommand("copy");
+					ta.remove();
+				}
+				btn.textContent = "✓";
+				setTimeout(() => (btn.textContent = original), 800);
+			}
+
+			$("copyResume").addEventListener("click", () =>
+				copyText($("resume").value, $("copyResume"))
+			);
+			$("copyJd").addEventListener("click", () =>
+				copyText($("jd").value, $("copyJd"))
+			);
+			$("copyReport").addEventListener("click", () =>
+				copyText($("report").textContent, $("copyReport"))
+			);
+
 			init();
 		</script>
 	</body>

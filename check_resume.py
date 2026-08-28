@@ -55,9 +55,7 @@ def main():
     else:
         print(f"[FAIL] {len(issues)} grammar/spelling issue(s) found:")
         for m in issues:
-            snippet = text[max(0, m.offset - 20) : m.offset + m.error_length + 20].replace("\n", " ")
-            print(f"  - {m.message}")
-            print(f"    Context: ...{snippet}...")
+            print(m)
 
     # Exit code
     if not page_ok or issues:

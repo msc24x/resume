@@ -78,6 +78,7 @@
 \begin{center}
     \textbf{\Huge \scshape Maninderpal Singh} \\ \vspace{1pt}
     \href{mailto:msc24x@gmail.com}{\underline{msc24x@gmail.com}} $|$
+    \href{tel:+91 78888 21718}{\underline{+91 78888 21718}} $|$
     \href{https://cambo.in}{\underline{cambo.in (portfolio)}} $|$
     \href{https://github.com/msc24x}{\underline{github.com/msc24x}} $|$
     \href{https://linkedin.com/in/msc24x}{\underline{linkedin.com/in/msc24x}}
@@ -92,58 +93,61 @@
 \section{Experience}
   \resumeSubHeadingListStart
   \resumeSubheading{Instahyre}{Sep 2023 -- Present}
-    {Full-Stack Developer}{New Delhi, India}
+    {SDE 1}{New Delhi, India}
     \resumeItemListStart
-      \resumeItem{\textbf{Bug fixes:} Have been investigating a wide range of issues and developing fixes in a routine within the team, resulting in improvement of various modules written in AngularJs and Django, in terms of reliability and user experience}
-      \resumeItem{\textbf{Development:} Collaboratively working and implementing features to develop and enhance some of the in-progress and existing modules}
+      \resumeItem{\textbf{Module Ownership:} Owned 4 platform modules at different stages, taking responsibility for feature development, code reviews, performance, monitoring \& incident response}
+      \resumeItem{\textbf{Platform Reliability:} Did RCA, resolved functional \& performance issues across modules (650+ tickets overall), cutting recurring bugs by 40\% in 2 quarters and boosting the legacy system’s stability, reducing tech debt.}
+      \resumeItem{\textbf{Product Collaboration:} Partnered closely with Product Managers and cross-functional teams to design and implement features across in-progress and existing modules \& contributing to iterative product improvements}
     \resumeItemListEnd
   \resumeSubheading{Buyceps}{Dec 2022 -- Sep 2023}
     {Software Engineer}{Mumbai, India}
     \resumeItemListStart
-      \resumeItem{\textbf{Lead backend engineer:} Buyceps Marketplace, producing fundamental platform level changes, such as unified authentication setup, order/shipment processing, data modeling etc}
-      \resumeItem{\textbf{Search:} Developed an Algolia powered Product Browser, created DB indices and UI/UX for employees, to make browsing blazingly fast}
-      \resumeItem{\textbf{Database load:} Responsible for noticeable optimizations on major GraphQL resolvers and REST APIs, effectively reducing the N+1 problem by 75 percent, in terms of SQL calls}
+      \resumeItem{\textbf{Backend Leadership:} End-to-end ownership for backend development of Buyceps Marketplace, implementing unified authentication, order/shipment workflows, and end-to-end reliability}
+      \resumeItem{\textbf{Search System:} Built an Algolia powered product browser with optimized DB indexing and internal UI tools for fast, efficient search}
+      \resumeItem{\textbf{Performance Optimization:} Optimized major GraphQL resolvers and Python/Django REST APIs, reducing N+1 queries and cutting SQL calls by 75\%.}
     \resumeItemListEnd
   \resumeSubheading{Studypaq}{Oct 2022 -- Dec 2022}
     {Software Engineer}{California, United States}
     \resumeItemListStart
-      \resumeItem{\textbf{Security:} Discovered \& fixed a critical vulnerability in company's payment accessible core product}
-      \resumeItem{\textbf{API design:} Took responsibility of designing and developing core of the APIs and backend architecture for MVP Studyplan feature}
-      \resumeItem{\textbf{Server performance:} Improved highly used endpoints' response by approx. 47\% on average, improving initial server response time for SSR}
+      \resumeItem{\textbf{Security \& Performance:} Discovered and fixed a critical vulnerability in a paywall protected module}
+      \resumeItem{\textbf{API Design \& Data Modeling:} Spearheaded the designing and developing core APIs and architecture}
+      \resumeItem{\textbf{Server performance:} Improved response time of high-traffic endpoints by 47\%, reducing SSR latency}
     \resumeItemListEnd
   \resumeSubHeadingListEnd
 
 \section{Projects}
     \resumeSubHeadingListStart
-      \resumeProjectHeading{{\textbf{Hunter - Online contests hosting platform (SaaS)}}}{Jan 2022 -- Sep 2022}
+      \resumeProjectHeading{{\textbf{Hunter - Online contests hosting platform (SaaS)}}}{Jan 2022}
       \resumeProjectHeading{\href{https://github.com/msc24x/hunter}{\emph{\underline{Repository}}}, \href{https://hunter.cambo.in}{\emph{\underline{Live}}}}{}
           \resumeItemListStart
-            \resumeItem{\textbf{Backend:} Wrote the back-end architecture involving Node's ExpressJs in TypeScript, \& PlanetScale for MySQL}
-            \resumeItem{\textbf{Client side:} Leveraged Angular framework to build components/services in TypeScript, consuming REST APIs}
-            \resumeItem{\textbf{Remote code execution:} Wrote Python \& Bash scripts to run inside Docker container that compiles, executes and test participants' code; supporting C, C++, JavaScript and Python}
-            \resumeItem{\textbf{Deployment:} An NGINX instance initially on Azure's VM \& DB service, then migrating to Oracle \& PlanetScale}
+            \resumeItem{\textbf{Architecture:} Engineered a full-stack SaaS using Node.js (Express, TypeScript), Angular, MySQL}
+            \resumeItem{\textbf{Code Execution Engine:} Created my own distributed remote execution service using GoLang, RabbitMQ}
+            \resumeItem{\textbf{Deployment:} Deployed using NGINX on Azure VM, later migrated infrastructure to Oracle Cloud and PlanetScale; later moved to bare-metal homelab; later moved again to Oracle on ARM based VM}
           \resumeItemListEnd
-      \resumeProjectHeading{{\textbf{DinoPlusPlus - A Terminal Based C++ Game (ASCII Graphics)}}}{Apr 2021 -- May 2021}
+      \resumeProjectHeading{{\textbf{Showdown - Distributed Remote Code Execution Engine}}}{Aug 2024}
+      \resumeProjectHeading{\href{https://github.com/msc24x/showdown}{\emph{\underline{Repository}}}, \href{https://showdown.cambo.in/}{\emph{\underline{Documentation}}}, \href{https://hub.docker.com/r/msc24x/showdown}{\emph{\underline{DockerHub}}}}{}
+          \resumeItemListStart
+            \resumeItem{\textbf{HTTP server:} Built a high-throughput scalable remote code execution engine and APIs in Go}
+            \resumeItem{\textbf{Containerization:} Using ISOLATE (open source project) for secure, containerized execution of untrusted code}
+            \resumeItem{\textbf{Distributed:} Implementation with a manager-worker architecture using RabbitMQ}
+          \resumeItemListEnd
+      \resumeProjectHeading{{\textbf{DinoPlusPlus - A Terminal Based C++ Game (ASCII Graphics)}}}{Apr 2021}
       \resumeProjectHeading{\href{https://github.com/msc24x/dinoplusplus}{\emph{\underline{Repository}}}}{}
           \resumeItemListStart
             \resumeItem{\textbf{Gameplay:} Programmed the entire game play mechanics, menu system \& animations without any specialized console game engine or code library}
             \resumeItem{\textbf{Frame desynchronization:} Fixed by caching the frame until fully computed and then drawing all at once}
             \resumeItem{\textbf{Collision detection:} Implemented proper edge detection of any object colliding, render time}
           \resumeItemListEnd
-      \resumeProjectHeading{{\textbf{Contactless - WhatsApp's API driven android app}}}{Jul 2020 -- Aug 2020}
-      \resumeProjectHeading{\href{https://github.com/msc24x/contactless}{\emph{\underline{Repository}}}, \href{https://forum.xda-developers.com/android/apps-games/5-0-contactless-whatsapp-t4151497}{\emph{\underline{XDA Forum}}}}{}
-          \resumeItemListStart
-            \resumeItem{\textbf{Android app:} Developed UI/UX using Kotlin consuming Web API allowing users to chat with any contact}
-          \resumeItemListEnd
     \resumeSubHeadingListEnd
 
 \section{Technical Skills}
  \begin{itemize}[leftmargin=0.15in, label={}]
     \small{\item{
-      \textbf{Languages:} Python, JavaScript/Typescript, C/C++, Bash \\
-      \textbf{Tools/Frameworks:} Django, Angular, Postgres, NextJs, SQL, Git, Mercurial, Docker, MongoDB, GraphQL \\
-      \textbf{Core Competencies:} Operating-Systems, Statistics, Linear Programming, OOP Design, Data structures \& Algorithms \\
-      \textbf{Soft Skills:} Communication, Management, Planning
+      \textbf{Languages:} Python, TypeScript, JavaScript, GoLang, C/C++, Bash \\
+      \textbf{Tools/Frameworks:} Django, Angular, REST APIs, Git, Express.js, Node.js, GraphQL, Agentic AI/LLM Automation \\
+      \textbf{Data:} MySQL, ElasticSearch, Redis, RabbitMQ, PostgreSQL, MongoDB \\
+      \textbf{Cloud \& DevOps:} Docker/Containerization, NGINX, Scripting, AWS, Microservices \\
+      \textbf{Core Competencies:} Scheme Design, Distributed Architecture, Object-Oriented Design (OOP), Query Optimization \\
     }}
  \end{itemize}
 
