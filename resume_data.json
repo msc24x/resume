@@ -1,133 +1,141 @@
 {
-    "personal_information": {
-        "name": "Maninderpal Singh",
-        "email": "msc24x@gmail.com",
-        "portfolio": "cambo.in",
-        "github": "github.com/msc24x",
-        "linkedin": "linkedin.com/in/msc24x"
-    },
-    "education": [
-        {
-            "institution": "Punjabi University",
-            "department": "Department of Statistics",
-            "degree": "B.Sc. in Computer Science, Statistics & Mathematics",
-            "start_date": "Jul 2019",
-            "end_date": "Jul 2022",
-            "score": "Percentile 89.8%"
-        }
-    ],
-    "experience": [
-        {
-            "company": "Instahyre",
-            "role": "Full-Stack Developer",
-            "start_date": "Sep 2023",
-            "end_date": "Present",
-            "location": "New Delhi, India",
-            "responsibilities": [
-                "Bug fixes: Have been investigating a wide range of issues and developing fixes in a routine within the team, resulting in improvement of various modules written in AngularJs and Django, in terms of reliability and user experience",
-                "Development: Collaboratively working and implementing features to develop and enhance some of the in-progress and existing modules"
-            ]
-        },
-        {
-            "company": "Buyceps",
-            "role": "Software Engineer",
-            "start_date": "Dec 2022",
-            "end_date": "Sep 2023",
-            "location": "Mumbai, India",
-            "responsibilities": [
-                "Lead backend engineer: Buyceps Marketplace, producing fundamental platform level changes, such as unified authentication setup, order/shipment processing, data modeling etc",
-                "Search: Developed an Algolia powered Product Browser, created DB indices and UI/UX for employees, to make browsing blazingly fast",
-                "Database load: Responsible for noticeable optimizations on major GraphQL resolvers and REST APIs, effectively reducing the N+1 problem by 75 percent, in terms of SQL calls"
-            ]
-        },
-        {
-            "company": "Studypaq",
-            "role": "Software Engineer",
-            "start_date": "Oct 2022",
-            "end_date": "Dec 2022",
-            "location": "California, United States",
-            "responsibilities": [
-                "Security: Discovered & fixed a critical vulnerability in company's payment accessible core product",
-                "API design: Took responsibility of designing and developing core of the APIs and backend architecture for MVP Studyplan feature",
-                "Server performance: Improved highly used endpoints' response by approx. 47% on average, improving initial server response time for SSR"
-            ]
-        }
-    ],
-    "projects": [
-        {
-            "name": "Hunter",
-            "description": "Online contests hosting platform (SaaS)",
-            "links": [
-                "Repository",
-                "Deployed at hunter.cambo.in"
-            ],
-            "start_date": "Jan 2022",
-            "end_date": "Sep 2022",
-            "details": [
-                "Backend: Wrote the back-end architecture involving Node's ExpressJs in TypeScript, & PlanetScale for MySQL",
-                "Client side: Leveraged Angular framework to build components/services in TypeScript, consuming REST APIs",
-                "Remote code execution: Wrote Python & Bash scripts to run inside Docker container that compiles, executes and test participants' code; supporting C, C++, JavaScript and Python",
-                "Deployment: An NGINX instance initially on Azure's VM & DB service, then migrating to Oracle & PlanetScale"
-            ]
-        },
-        {
-            "name": "DinoPlusPlus",
-            "description": "A Terminal Based C++ Game (ASCII Graphics)",
-            "links": [
-                "Repository"
-            ],
-            "start_date": "Apr 2021",
-            "end_date": "May 2021",
-            "details": [
-                "Gameplay: Programmed the entire game play mechanics, menu system & animations without any specialized console game engine or code library",
-                "Frame desynchronization: Fixed by caching the frame until fully computed and then drawing all at once",
-                "Collision detection: Implemented proper edge detection of any object colliding, render time"
-            ]
-        },
-        {
-            "name": "Contactless",
-            "description": "WhatsApp's API driven android app",
-            "links": [
-                "Repository",
-                "XDA Forum"
-            ],
-            "start_date": "Jul 2020",
-            "end_date": "Aug 2020",
-            "details": [
-                "Android app: Developed UI/UX using Kotlin consuming Web API allowing users to chat with any contact"
-            ]
-        }
-    ],
-    "technical_skills": {
-        "programming_scripting_languages": [
-            "Python",
-            "JavaScript/Typescript",
-            "C/C++",
-            "Bash"
-        ],
-        "tools_frameworks": [
-            "Django",
-            "Angular",
-            "Postgres",
-            "NextJs",
-            "SQL",
-            "Git",
-            "Mercurial",
-            "Docker",
-            "MongoDB",
-            "GraphQL"
-        ],
-        "technical": [
-            "Operating-Systems",
-            "Statistics",
-            "Linear Programming",
-            "OOP Design",
-            "Data structures & Algorithms"
-        ],
-        "soft_skills": [
-            "Communication",
-            "Management",
-            "Planning"
-        ]
-    }
+	"personal_information": {
+		"name": "Maninderpal Singh",
+		"email": "msc24x@gmail.com",
+		"portfolio": "cambo.in",
+		"github": "github.com/msc24x",
+		"linkedin": "linkedin.com/in/msc24x"
+	},
+	"education": [
+		{
+			"institution": "Punjabi University",
+			"department": "Department of Statistics",
+			"degree": "B.Sc. in Computer Science, Statistics & Mathematics",
+			"start_date": "Jul 2019",
+			"end_date": "Jul 2022",
+			"score": "Percentile 89.8%"
+		}
+	],
+	"experience": [
+		{
+			"company": "Instahyre",
+			"role": "Full-Stack Developer",
+			"start_date": "Sep 2023",
+			"end_date": "Present",
+			"location": "New Delhi, India",
+			"responsibilities": [
+				"Bug fixes: Have been investigating a wide range of issues and developing fixes in a routine within the team, resulting in improvement of various modules written in AngularJs and Django, in terms of reliability and user experience",
+				"Development: Collaboratively working and implementing features to develop and enhance some of the in-progress and existing modules"
+			]
+		},
+		{
+			"company": "Buyceps",
+			"role": "Software Engineer",
+			"start_date": "Dec 2022",
+			"end_date": "Sep 2023",
+			"location": "Mumbai, India",
+			"responsibilities": [
+				"Lead backend engineer: Buyceps Marketplace, producing fundamental platform level changes, such as unified authentication setup, order/shipment processing, data modeling etc",
+				"Search: Developed an Algolia powered Product Browser, created DB indices and UI/UX for employees, to make browsing blazingly fast",
+				"Database load: Responsible for noticeable optimizations on major GraphQL resolvers and REST APIs, effectively reducing the N+1 problem by 75 percent, in terms of SQL calls"
+			]
+		},
+		{
+			"company": "Studypaq",
+			"role": "Software Engineer",
+			"start_date": "Oct 2022",
+			"end_date": "Dec 2022",
+			"location": "California, United States",
+			"responsibilities": [
+				"Security: Discovered & fixed a critical vulnerability in company's payment accessible core product",
+				"API design: Took responsibility of designing and developing core of the APIs and backend architecture for MVP Studyplan feature",
+				"Server performance: Improved highly used endpoints' response by approx. 47% on average, improving initial server response time for SSR"
+			]
+		}
+	],
+	"projects": [
+		{
+			"name": "Hunter",
+			"description": "Online contests hosting platform (SaaS)",
+			"links": [
+				{
+					"label": "Repository",
+					"url": "https://github.com/msc24x/hunter"
+				},
+				{ "label": "Live", "url": "https://hunter.cambo.in" }
+			],
+			"start_date": "Jan 2022",
+			"end_date": "Sep 2022",
+			"details": [
+				"Backend: Wrote the back-end architecture involving Node's ExpressJs in TypeScript, & PlanetScale for MySQL",
+				"Client side: Leveraged Angular framework to build components/services in TypeScript, consuming REST APIs",
+				"Remote code execution: Wrote Python & Bash scripts to run inside Docker container that compiles, executes and test participants' code; supporting C, C++, JavaScript and Python",
+				"Deployment: An NGINX instance initially on Azure's VM & DB service, then migrating to Oracle & PlanetScale"
+			]
+		},
+		{
+			"name": "DinoPlusPlus",
+			"description": "A Terminal Based C++ Game (ASCII Graphics)",
+			"links": [
+				{
+					"label": "Repository",
+					"url": "https://github.com/msc24x/dinoplusplus"
+				}
+			],
+			"start_date": "Apr 2021",
+			"end_date": "May 2021",
+			"details": [
+				"Gameplay: Programmed the entire game play mechanics, menu system & animations without any specialized console game engine or code library",
+				"Frame desynchronization: Fixed by caching the frame until fully computed and then drawing all at once",
+				"Collision detection: Implemented proper edge detection of any object colliding, render time"
+			]
+		},
+		{
+			"name": "Contactless",
+			"description": "WhatsApp's API driven android app",
+			"links": [
+				{
+					"label": "Repository",
+					"url": "https://github.com/msc24x/contactless"
+				},
+				{
+					"label": "XDA Forum",
+					"url": "https://forum.xda-developers.com/android/apps-games/5-0-contactless-whatsapp-t4151497"
+				}
+			],
+			"start_date": "Jul 2020",
+			"end_date": "Aug 2020",
+			"details": [
+				"Android app: Developed UI/UX using Kotlin consuming Web API allowing users to chat with any contact"
+			]
+		}
+	],
+	"technical_skills": {
+		"programming_scripting_languages": [
+			"Python",
+			"JavaScript/Typescript",
+			"C/C++",
+			"Bash"
+		],
+		"tools_frameworks": [
+			"Django",
+			"Angular",
+			"Postgres",
+			"NextJs",
+			"SQL",
+			"Git",
+			"Mercurial",
+			"Docker",
+			"MongoDB",
+			"GraphQL"
+		],
+		"technical": [
+			"Operating-Systems",
+			"Statistics",
+			"Linear Programming",
+			"OOP Design",
+			"Data structures & Algorithms"
+		],
+		"soft_skills": ["Communication", "Management", "Planning"]
+	}
 }

@@ -1,0 +1,50 @@
+# Company names
+Instahyre
+Buyceps
+Studypaq
+Studyplan
+PlanetScale
+
+# Tech terms
+Django
+Angular
+AngularJs
+GraphQL
+NextJs
+NodeJS
+ExpressJs
+TypeScript
+MySQL
+PostgreSQL
+MongoDB
+ElasticSearch
+Redis
+RabbitMQ
+NGINX
+Docker
+Mercurial
+Bash
+GoLang
+Kotlin
+C++
+
+# People/places
+Maninderpal
+Singh
+msc24x
+New Delhi
+Mumbai
+California
+
+# Other proper nouns
+Algolia
+XDA
+SSR
+SaaS
+MVP
+REST
+APIs
+DinoPlusPlus
+
+# Abbreviations
+etc

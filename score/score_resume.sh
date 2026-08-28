@@ -63,7 +63,7 @@ if [ -z "$VERBOSE" ]; then
 fi
 
 if [ -n "$JD_FILE" ]; then
-    python3 "$SCRIPT_DIR/score_resume.py" $VERBOSE "$SCRIPT_DIR/resume_data.json" "$JD_FILE"
+    python3 "$SCRIPT_DIR/score_resume.py" $VERBOSE "$SCRIPT_DIR/../resume_data.json" "$JD_FILE"
 else
-    echo "$JD_TEXT" | python3 "$SCRIPT_DIR/score_resume.py" $VERBOSE "$SCRIPT_DIR/resume_data.json"
+    echo "$JD_TEXT" | python3 "$SCRIPT_DIR/score_resume.py" $VERBOSE "$SCRIPT_DIR/../resume_data.json"
 fi
