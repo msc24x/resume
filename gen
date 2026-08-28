@@ -1,2 +1,12 @@
-# !bin/bash
-pdflatex resume.tex
+#!/bin/bash
+set -e
+
+echo "==> Generating LaTeX from JSON..."
+python3 generate_resume.py
+
+echo "==> Compiling PDF..."
+pdflatex -interaction=nonstopmode resume.tex > /dev/null 2>&1
+
+echo "==> Running checks..."
+python3 check_resume.py resume.pdf
+echo "==> Done."

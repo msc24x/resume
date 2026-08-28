@@ -1,0 +1,60 @@
+About the job
+
+Overview
+
+Working at Atlassian
+
+Atlassians can choose where they work – whether in an office, from home, or a combination of the two. That way, Atlassians have more control over supporting their family, personal goals, and other priorities. We can hire people in any country where we have a legal entity.
+
+This is a remote position. Our office is in Bengaluru, but we offer flexibility for eligible candidates to work remotely across India. Whatever your preference - working from home, an office, or in between - you can choose the place that's best for your work and your lifestyle.
+
+Your future team
+
+To become a 100 year company, we need a world-class engineering organisation made up of empowered teams who have the tools and infrastructure to do the best work of their careers. As a part of a unified R&D team, Engineering is prioritising key initiatives which support our customers in moving to cloud while simultaneously continuing to bring the most value to our customers through investments across our core product suite – such as Jira, Confluence, Trello, and Bitbucket. We're looking for people who want to write the future and who believe that we can accomplish so much more together. You will report to one of the Engineering Managers of the R&D teams.
+
+Responsibilities
+
+What you'll do
+
+    Build and ship features and capabilities daily in highly scalable, cross-geo distributed environment
+    Be part of an amazing open and collaborative work environment with other experienced engineers, architects, product managers, and designers
+    Review code with best practices of readability, testing patterns, documentation, reliability, security, and performance considerations in mind
+    Mentor and level up the skills of your teammates by sharing your expertise in formal and informal knowledge sharing sessions
+    Ensure full visibility, error reporting, and monitoring of high performing backend services
+    Participate in Agile software development including daily stand-ups, sprint planning, team retrospectives, show and tell demo sessions
+
+
+Compensation
+
+At Atlassian, we strive to design equitable, explainable, and competitive compensation programs. We follow consistent hiring practices and account for each candidate's skills, knowledge, and experience when setting base pay within the range.
+
+This role may also be eligible for benefits, bonuses, commissions, and equity.
+
+Qualifications
+
+Your background
+
+    4+ years of experience building and developing backend applications - Bachelor's or Master's degree with a preference for Computer Science degree
+    Experience crafting and implementing highly scalable and performant RESTful micro-services
+    Proficiency in any modern object-oriented programming language (e.g., Java, Kotlin, Go, Scala, Python, etc.)
+    Fluency in any one database technology (e.g. RDBMS like Oracle or Postgres and/or NoSQL like DynamoDB or Cassandra)
+    Real passion for collaboration and strong interpersonal and communication skills
+    Broad knowledge and understanding of SaaS, PaaS, IaaS industry with hands-on experience of public cloud offerings (AWS, GAE, Azure)
+    Familiarity with cloud architecture patterns and an engineering discipline to produce software with quality
+
+
+Benefits & Perks
+
+Atlassian offers a wide range of perks and benefits designed to support you, your family and to help you engage with your local community. Our offerings include health and wellbeing resources, paid volunteer days, and so much more. To learn more, visit go.atlassian.com/perksandbenefits .
+
+About Atlassian
+
+At Atlassian, we're motivated by a common goal: to unleash the potential of every team. Our software products help teams all over the planet and our solutions are designed for all types of work. Team collaboration through our tools makes what may be impossible alone, possible together.
+
+We believe that the unique contributions of all Atlassians create our success. To ensure that our products and culture continue to incorporate everyone's perspectives and experience, we never discriminate based on race, religion, national origin, gender identity or expression, sexual orientation, age, or marital, veteran, or disability status. All your information will be kept confidential according to EEO guidelines.
+
+To provide you the best experience, we can support with accommodations or adjustments at any stage of the recruitment process. Simply inform our Recruitment team during your conversation with them.
+
+To learn more about our culture and hiring process, visit go.atlassian.com/crh .
+
+In line with local law, identity verification (which may include use of biometric data) is a condition of employment with Atlassian for employment fraud purposes.

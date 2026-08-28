@@ -13,26 +13,12 @@
 \usepackage{tabularx}
 \input{glyphtounicode}
 
-
-%----------FONT OPTIONS----------
-% sans-serif
-% \usepackage[sfdefault]{FiraSans}
-% \usepackage[sfdefault]{roboto}
-% \usepackage[sfdefault]{noto-sans}
-% \usepackage[default]{sourcesanspro}
-
-% serif
-% \usepackage{CormorantGaramond}
-% \usepackage{charter}
-
-
 \pagestyle{fancy}
-\fancyhf{} % clear all header and footer fields
+\fancyhf{}
 \fancyfoot{}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 
-% Adjust margins
 \addtolength{\oddsidemargin}{-0.5in}
 \addtolength{\evensidemargin}{-0.2in}
 \addtolength{\textwidth}{1in}
@@ -45,16 +31,12 @@
 \raggedright
 \setlength{\tabcolsep}{0in}
 
-% Sections formatting
 \titleformat{\section}{
   \vspace{-4pt}\scshape\raggedright\large
 }{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
-% Ensure that generate pdf is machine readable/ATS parsable
 \pdfgentounicode=1
 
-%-------------------------
-% Custom commands
 \newcommand{\resumeItem}[1]{
   \item\small{
     {#1 \vspace{-2pt}}
@@ -92,132 +74,85 @@
 \newcommand{\resumeItemListStart}{\begin{itemize}}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
 
-%-------------------------------------------
-%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 \begin{document}
 
 \begin{center}
     \textbf{\Huge \scshape Maninderpal Singh} \\ \vspace{1pt}
-    % \small \href{tel:+91 12345 67890}{+91 12345 67890} $|$
     \href{mailto:msc24x@gmail.com}{\underline{msc24x@gmail.com}} $|$ 
     \href{https://cambo.in}{\underline{cambo.in (portfolio)}} $|$ 
     \href{https://github.com/msc24x}{\underline{github.com/msc24x}} $|$
     \href{https://linkedin.com/in/msc24x}{\underline{linkedin.com/in/msc24x}}
 \end{center}
 
-
-%-----------EDUCATION-----------
 \section{Education}
   \resumeSubHeadingListStart
     \resumeSubheading
-      {Punjabi University}{89.8 Percentile}
-      {Department of Statistics | B.Sc. in Computer Science, Statistics and Mathematics}{Jul. 2019 -- Jul. 2022}      
+      {Punjabi University}{Percentile 89.8\%}
+      {Department of Statistics | B.Sc. in Computer Science, Statistics \& Mathematics}{Jul 2019 -- Jul 2022}
   \resumeSubHeadingListEnd
 
-
-%-----------EXPERIENCE-----------
 \section{Experience}
   \resumeSubHeadingListStart
-
   \resumeSubheading
     {Instahyre}{Sep 2023 -- Present}
-    {SDE I}{New Delhi, India}
+    {Full-Stack Developer}{New Delhi, India}
     \resumeItemListStart
-      \resumeItem{\textbf{Module Ownership: }Owned 4 platform modules at different stages, taking responsibility for feature development, bug resolution and performance optimizations.}
-      \resumeItem{\textbf{Platform Reliability: }Resolved functional and performance issues across owned modules, cutting recurring bugs by 40\% in two quarters and boosting system stability and module reliability.}
-      \resumeItem{\textbf{Product Collaboration: }Partnered closely with Product Managers and cross-functional teams to design and implement features across in-progress and existing modules, contributing to iterative product improvements and timely feature delivery.}
+      \resumeItem{\textbf{Bug fixes:} Have been investigating a wide range of issues and developing fixes in a routine within the team, resulting in improvement of various modules written in AngularJs and Django, in terms of reliability and user experience}
+      \resumeItem{\textbf{Development:} Collaboratively working and implementing features to develop and enhance some of the in-progress and existing modules}
     \resumeItemListEnd
-
   \resumeSubheading
-      {Buyceps}{Dec 2022 -- Sep 2023}
-      {Software Engineer}{Mumbai, India}
-      \resumeItemListStart
-        \resumeItem{\textbf{Backend Leadership: }Led backend development for Buyceps Marketplace, implementing unified authentication, order/shipment workflows, and core data models.}
-        \resumeItem{\textbf{Search System: }Built an Algolia-powered product browser with optimized DB indexing and internal UI tools for fast, efficient search.}
-        \resumeItem{\textbf{Performance Optimization: }Optimized major GraphQL resolvers and REST APIs, reducing N+1 queries and cutting SQL calls by 75\%.}
-      \resumeItemListEnd
-
+    {Buyceps}{Dec 2022 -- Sep 2023}
+    {Software Engineer}{Mumbai, India}
+    \resumeItemListStart
+      \resumeItem{\textbf{Lead backend engineer:} Buyceps Marketplace, producing fundamental platform level changes, such as unified authentication setup, order/shipment processing, data modeling etc}
+      \resumeItem{\textbf{Search:} Developed an Algolia powered Product Browser, created DB indices and UI/UX for employees, to make browsing blazingly fast}
+      \resumeItem{\textbf{Database load:} Responsible for noticeable optimizations on major GraphQL resolvers and REST APIs, effectively reducing the N+1 problem by 75 percent, in terms of SQL calls}
+    \resumeItemListEnd
   \resumeSubheading
     {Studypaq}{Oct 2022 -- Dec 2022}
     {Software Engineer}{California, United States}
     \resumeItemListStart
-      \resumeItem{\textbf{Security \& Performance: }Discovered and fixed a critical vulnerability in a paywall protected module.}
-      \resumeItem{\textbf{API design: }Responsible of designing and developing core APIs and architecture. }
-      \resumeItem{\textbf{Server performance: }Improved response time of high-traffic endpoints by 47\%, reducing SSR latency.}
+      \resumeItem{\textbf{Security:} Discovered \& fixed a critical vulnerability in company's payment accessible core product}
+      \resumeItem{\textbf{API design:} Took responsibility of designing and developing core of the APIs and backend architecture for MVP Studyplan feature}
+      \resumeItem{\textbf{Server performance:} Improved highly used endpoints' response by approx. 47\% on average, improving initial server response time for SSR}
     \resumeItemListEnd
-      
-% -----------Multiple Positions Heading-----------
-%    \resumeSubSubheading
-%     {Software Engineer I}{Oct 2014 - Sep 2016}
-%     \resumeItemListStart
-%        \resumeItem{Apache Beam}
-%          {Apache Beam is a unified model for defining both batch and streaming data-parallel processing pipelines}
-%     \resumeItemListEnd
-%    \resumeSubHeadingListEnd
-%-------------------------------------------
-
   \resumeSubHeadingListEnd
 
-
-%-----------PROJECTS-----------
 \section{Projects}
     \resumeSubHeadingListStart
       \resumeProjectHeading
           {\textbf{Hunter - Online contests hosting platform (SaaS)}}{Jan 2022 -- Sep 2022}
-      \resumeProjectHeading{\href{https://github.com/msc24x/hunter}{\emph{\underline{Repository}}} Deployed at \href{https://hunter.cambo.in}{\emph{\underline{hunter.cambo.in}}}}{}
+      \resumeProjectHeading{\href{https://github.com/msc24x/hunter}{\emph{\underline{Repository}}}, Deployed at \href{https://hunter.cambo.in}{\emph{\underline{hunter.cambo.in}}}}{}
           \resumeItemListStart
-            \resumeItem{\textbf{Architecture: }Engineered a full-stack SaaS using Node.js (Express, TypeScript), Angular, MySQL.}
-            \resumeItem{\textbf{Code Execution Engine: }Created my own containerized remote execution service using GoLang, RabbitMQ.}
-            \resumeItem{\textbf{Deployment: }Deployed using NGINX on Azure VM, later migrating infrastructure to Oracle Cloud and PlanetScale; currently self-hosted on bare-metal homelab.}
+            \resumeItem{\textbf{Backend:} Wrote the back-end architecture involving Node's ExpressJs in TypeScript, \& PlanetScale for MySQL}
+            \resumeItem{\textbf{Client side:} Leveraged Angular framework to build components/services in TypeScript, consuming REST APIs}
+            \resumeItem{\textbf{Remote code execution:} Wrote Python \& Bash scripts to run inside Docker container that compiles, executes and test participants' code; supporting C, C++, JavaScript and Python}
+            \resumeItem{\textbf{Deployment:} An NGINX instance initially on Azure's VM \& DB service, then migrating to Oracle \& PlanetScale}
           \resumeItemListEnd
-          
-    \resumeProjectHeading
+      \resumeProjectHeading
           {\textbf{DinoPlusPlus - A Terminal Based C++ Game (ASCII Graphics)}}{Apr 2021 -- May 2021}
-      \resumeProjectHeading{\href{https://github.com/msc24x/DinoPlusPlus}{\emph{\underline{Repository}}}}{}
+      \resumeProjectHeading{\href{https://github.com/msc24x/dinoplusplus}{\emph{\underline{Repository}}}}{}
           \resumeItemListStart
-            \resumeItem{\textbf{Gameplay Engine:} Built core gameplay, menu system, and animations from scratch without external libraries.}
-            \resumeItem{\textbf{Rendering Optimization:} Resolved frame desynchronization by buffering frames before rendering.}
-            \resumeItem{\textbf{Collision Detection:} Implemented real-time edge-based collision detection.}
+            \resumeItem{\textbf{Gameplay:} Programmed the entire game play mechanics, menu system \& animations without any specialized console game engine or code library}
+            \resumeItem{\textbf{Frame desynchronization:} Fixed by caching the frame until fully computed and then drawing all at once}
+            \resumeItem{\textbf{Collision detection:} Implemented proper edge detection of any object colliding, render time}
           \resumeItemListEnd
-
-    % \resumeProjectHeading
-    %       {\textbf{BOP Music - Android Music Player}}{July 2021 -- Oct 2021}
-    %   \resumeProjectHeading{\href{https://github.com/lscambo13/GrooveMusicClone}{\emph{\underline{Repository}}}}{}
-    %       \resumeItemListStart
-    %         \resumeItem{\textbf{UI/UX:} Built clean UI and smooth experience using motion layouts and following the principles of MVVM architecture}
-    %         \resumeItem{\textbf{Data/services:} Implemented background player service with SQL room database}
-    %       \resumeItemListEnd
-
-    \resumeProjectHeading
-          {\textbf{Contactless - WhatsApp’s API driven android app }}{Jul 2020 -- Aug 2020}
-      \resumeProjectHeading{\href{https://github.com/lscambo13/ContactlessForWhatsApp}{\emph{\underline{Repository}}},       \href{https://forum.xda-developers.com/android/apps-games/5-0-contactless-whatsapp-t4151497}{\emph{\underline{XDA Forum}}}}{}
+      \resumeProjectHeading
+          {\textbf{Contactless - WhatsApp's API driven android app}}{Jul 2020 -- Aug 2020}
+      \resumeProjectHeading{\href{https://github.com/msc24x/contactless}{\emph{\underline{Repository}}}, \href{https://forum.xda-developers.com/android/apps-games/5-0-contactless-whatsapp-t4151497}{\emph{\underline{XDA Forum}}}}{}
           \resumeItemListStart
             \resumeItem{\textbf{Android app:} Developed UI/UX using Kotlin consuming Web API allowing users to chat with any contact}
           \resumeItemListEnd
-          
     \resumeSubHeadingListEnd
 
-%-----------PROGRAMMING SKILLS-----------
 \section{Technical Skills}
  \begin{itemize}[leftmargin=0.15in, label={}]
     \small{\item{
-      \textbf{Languages:} Python, TypeScript, JavaScript, GoLang, C/C++, Bash \\
-      \textbf{Tools/Frameworks:} Django, Angular, REST APIs, Git, Mercurial, NextJS, NodeJS, GraphQL \\
-      \textbf{Data:} MySQL, ElasticSearch, Redis, RabbitMQ, PostgreSQL, MongoDB \\
-      \textbf{Cloud \& DevOps:} Docker, NGINX, Scripting, Azure, Oracle Cloud \\
-      \textbf{Core Competencies:} System Design, Performance Engineering, Management, Scalability, AI
+      \textbf{Languages:} Python, JavaScript/Typescript, C/C++, Bash \\
+      \textbf{Tools/Frameworks:} Django, Angular, Postgres, NextJs, SQL, Git, Mercurial, Docker, MongoDB, GraphQL \\
+      \textbf{Core Competencies:} Operating-Systems, Statistics, Linear Programming, OOP Design, Data structures \& Algorithms \\
+      \textbf{Soft Skills:} Communication, Management, Planning
     }}
  \end{itemize}
 
-%  %-----------LIBRARIES-----------
-% \section{Packages Written}
-% \begin{itemize}[leftmargin=0.15in, label={}]
-%    \small{\item{
-%     \textbf{ \href{https://github.com/msc24x/xobserver}{\emph{\underline{XObserver}}} } {: An NPM package to enhance some subjective usage of IntersectionObserver API}
-%    }}
-% \end{itemize}
-
-%-------------------------------------------
 \end{document}
