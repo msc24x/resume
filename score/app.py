@@ -17,7 +17,7 @@ BASE_DIR = SCORE_DIR.parent
 RESUME_JSON = BASE_DIR / "resume_data.json"
 RESUME_PDF = BASE_DIR / "resume.pdf"
 SKILLS_MAP = SCORE_DIR / "skills_map.json"
-GEN_SCRIPT = BASE_DIR / "gen"
+GEN_SCRIPT = BASE_DIR / "generator" / "gen"
 TEST_JD = SCORE_DIR / "test_jd.txt"
 INDEX_HTML = SCORE_DIR / "index.html"
 

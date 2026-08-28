@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 import json
 import re
+from pathlib import Path
+
+SCRIPT_DIR = Path(__file__).resolve().parent
+REPO_ROOT = SCRIPT_DIR.parent
 
 PLACEHOLDER = re.compile(r'\{\{(\w+)\}\}')
 
@@ -118,9 +122,9 @@ def build_skills(skills):
     ])
 
 def main():
-    with open('resume_data.json') as f:
+    with open(REPO_ROOT / 'resume_data.json') as f:
         data = json.load(f)
-    with open('resume_template.tex') as f:
+    with open(SCRIPT_DIR / 'resume_template.tex') as f:
         template = f.read()
 
     context = {
@@ -133,7 +137,7 @@ def main():
 
     result = PLACEHOLDER.sub(lambda m: context.get(m.group(1), m.group(0)), template)
 
-    with open('resume.tex', 'w') as f:
+    with open(REPO_ROOT / 'resume.tex', 'w') as f:
         f.write(result)
 
     print("Generated resume.tex successfully!")

@@ -2,14 +2,22 @@
 import subprocess
 import sys
 import os
+from pathlib import Path
 
-def load_whitelist(path="whitelist.txt"):
+SCRIPT_DIR = Path(__file__).resolve().parent
+REPO_ROOT = SCRIPT_DIR.parent
+
+def load_whitelist(path=None):
+    if path is None:
+        path = SCRIPT_DIR / "whitelist.txt"
     if not os.path.exists(path):
         return set()
     with open(path) as f:
         return {line.strip().lower() for line in f if line.strip() and not line.startswith("#")}
 
-def get_page_count(pdf_path="resume.pdf"):
+def get_page_count(pdf_path=None):
+    if pdf_path is None:
+        pdf_path = REPO_ROOT / "resume.pdf"
     result = subprocess.run(["pdfinfo", pdf_path], capture_output=True, text=True)
     for line in result.stdout.splitlines():
         if line.startswith("Pages:"):
@@ -33,7 +41,9 @@ def check_grammar(text, whitelist):
     return filtered
 
 def main():
-    pdf_path = sys.argv[1] if len(sys.argv) > 1 else "resume.pdf"
+    pdf_path = sys.argv[1] if len(sys.argv) > 1 else None
+    if pdf_path is None:
+        pdf_path = REPO_ROOT / "resume.pdf"
     whitelist = load_whitelist()
 
     # Page count

@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Generate LaTeX from JSON
-        run: python3 generate_resume.py
+        run: python3 generator/generate_resume.py
 
       - name: Compile LaTeX
         uses: dante-ev/latex-action@latest
