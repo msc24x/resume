@@ -3,7 +3,7 @@ set -euo pipefail
 
 SERVICE_NAME="scorer"
 SCORE_DIR="$(cd "$(dirname "$0")" && pwd)"
-SERVICE_USER="$(whoami)"
+SERVICE_USER="${SUDO_USER:-$(whoami)}"
 PYTHON_BIN="$(command -v python3)"
 
 UNIT_FILE="/etc/systemd/system/${SERVICE_NAME}.service"
