@@ -70,7 +70,7 @@ async def api_score(req: Request):
     skills_map = get_skills_map()
     years, months = calc_experience(resume_data.get("experience", []))
     jd_required = extract_required_years(jd_text)
-    result = score_resume(resume_data, jd_text, skills_map)
+    result = score_resume(resume_data, jd_text, skills_map, years=years, jd_required=jd_required)
     experience_info = {"your_experience": (years, months), "jd_required": jd_required}
     verbose = bool(data.get("verbose", False))
     report = format_report(result, experience_info, skills_map, verbose=verbose)
