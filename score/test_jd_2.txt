@@ -1,0 +1,72 @@
+Software Engineer (Backend) Python + Django
+
+About PDQ
+
+PDQ, founded in Salt Lake City, UT, USA, makes device management simple, secure, and Pretty Damn Quick. IT teams use our products to reduce complexity, improve efficiency, and enhance control in their unique environments. We are backed by TA Associates and Berkshire Partners, top-tier global private equity firms. 
+
+ 
+
+Our Core Values: 
+
+    Honesty: You communicate transparently and build trust through your actions.
+    Ownership: You take responsibility for outcomes and follow through on commitments.
+    Collaboration: You value diverse perspectives and work effectively across teams.
+    Improvement: You actively seek opportunities to learn, grow, and innovate.
+
+
+Location
+
+    Remote, Romania: This is a full time opportunity following a hybrid work model, combining remote work with regular attendance at our Bucharest office. 
+
+
+Why you'll want to be a Software Engineer at PDQ (with a knack for debugging and customer connection):  
+
+    Build software that IT pros love and help them succeed. PDQ is a fast-growing SaaS company with a fiercely loyal customer base. Our products manage millions of devices globally, and we’re trusted by tens of thousands of IT teams to deploy software, manage inventory, and remediate vulnerabilities quickly and reliably. You'll join the Detections team, which is responsible for the vulnerability intelligence engine, the process of collecting device data and the mechanism that turns findings into accurate, trustworthy, actionable vulnerability matches and their remediations.
+    We’re scaling smart, and you have a voice. We’re growing sustainably, investing in our people, and building a long-term engineering culture. You’ll have autonomy, clear impact, and a seat at the table in shaping our product. Our systems are modern and fun to build, and your insights from real-world usage will help make them even better.
+    Bridge the gap between code and customers. You'll collaborate closely with Customer Support, Product, and Engineering teams to triage and resolve complex customer-reported issues. Whether it's analyzing logs, reproducing edge-case bugs, or pushing quick fixes, your work ensures our customers stay happy, and our software stays reliable.
+    Local team. Global impact. We’re expanding in Romania to build a strong, collaborative engineering hub. You’ll work with smart, humble teammates in the U.S. and across Romania, shipping real features and solving tough production issues together.
+    Real engineering meets real-world problem solving. We keep processes lean, feedback direct, and overhead minimal. Our engineers focus on shipping high-quality code, mentoring each other, and continuously improving tools and systems. If you enjoy rolling up your sleeves to debug a tough issue and talking through technical topics with both peers and customers, you’ll thrive here.
+    Why Join? If you love building, debugging, learning, and making a visible impact on customer experience, all while working with a modern tech stack and talented teammates, now is the perfect time to join PDQ.
+
+
+What you'll be doing:
+
+    Developing backend systems that turn device data into accurate vulnerability matches with exhaustive production impact analysis
+    Maintaining and operating the backend services and pipelines that power vulnerability detection, including deployments, monitoring, and incident response to keep them running reliably at scale
+    Onboarding new vulnerability data sources, each with its own data and integration requirements
+    Collaborating with cross-functional teams to improve detection accuracy and reliability
+    Investigating false positives and false negatives, tracing issues back to their root cause
+    Troubleshooting reported detection issues and implementing fixes efficiently
+
+
+We're looking for people who have:
+
+Must Have
+
+    3+ years of software development experience, with hands-on exposure to live production environments
+    Strong proficiency in Python
+    Experience building and maintaining REST APIs (e.g.: Django, FastAPI)
+    Experience with database technologies and search or indexing datastores (e.g.: SQL, NoSQL, Elasticsearch)
+    Experience with containerization technologies such as Docker
+    Solid understanding of distributed systems and scalability principles
+    Proficiency using AI-assisted engineering tools to safely improve day-to-day productivity
+
+
+Nice to Have:
+
+    Experience with vulnerability management, CVE/CPE data, or security-related tooling
+    Familiarity with Linux, macOS and Windows systems internals
+    Experience with Redis or comparable caching solutions
+    Exposure to CI/CD pipelines and modern DevOps practices
+
+
+Who you are:
+
+    Ownership: You take responsibility for projects, drive results, and deliver on commitments
+    Honesty: You demonstrate integrity, transparency, and ethical behavior in all interactions
+    Collaboration: You work effectively with cross-functional teams and foster a culture of teamwork
+    Improvement: You continuously seek opportunities for growth, innovation, and personal development
+    Ability to read code and quickly make sense of an unfamiliar codebase
+    Ability to understand a problem space and make code changes safely
+    Ability to work with inconsistent, unstructured and dynamic real-world data
+    Strong analytical and problem-solving skills, with an ability to trace issues back to their root cause

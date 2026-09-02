@@ -154,18 +154,56 @@ def find_category(term, skills_map):
     return None
 
 
-def fuzzy_match(term, candidates, threshold=0.85):
+def fuzzy_match(term, candidates, threshold=0.88):
     best_match = None
     best_score = 0
+    term_lower = term.lower()
     for candidate in candidates:
-        score = SequenceMatcher(None, term.lower(), candidate.lower()).ratio()
+        candidate_lower = candidate.lower()
+        # Require same first letter to avoid bogus matches (e.g. testing -> existing)
+        if not term_lower or not candidate_lower or term_lower[0] != candidate_lower[0]:
+            continue
+        score = SequenceMatcher(None, term_lower, candidate_lower).ratio()
         if score > best_score and score >= threshold:
             best_score = score
             best_match = candidate
     return best_match, best_score
 
 
-def score_resume(resume_data, jd_text, skills_map):
+def extract_alternative_groups(jd_text, skills_map, stemmer):
+    """Find groups of alternative skill terms in JD (e.g. 'any X (e.g., A, B, C)').
+    Returns list of sets of JD tokens that are mutually-exclusive alternatives."""
+    all_aliases = set()
+    for aliases in skills_map.values():
+        for a in aliases:
+            all_aliases.add(a.lower())
+    all_alias_stems = {stem_word(stemmer, a) for a in all_aliases}
+
+    groups = []
+    for m in re.finditer(r'\(([^()]+)\)', jd_text):
+        content = m.group(1).lower()
+        start = m.start()
+        preceding = jd_text[max(0, start - 80):start].lower()
+
+        is_alt = any(kw in content for kw in ['e.g.', 'eg', 'such as', 'like', 'for example', 'including'])
+        is_any = 'any' in preceding or 'one of' in preceding or 'either' in preceding
+
+        tokens = tokenize_text(content)
+        group = set()
+        for tok in tokens:
+            if tok in all_aliases or stem_word(stemmer, tok) in all_alias_stems:
+                group.add(tok)
+
+        if len(group) < 2:
+            continue
+
+        non_skill_meaningful = [t for t in tokens if t not in group and len(t) > 2]
+        if is_alt or is_any or len(non_skill_meaningful) <= 1:
+            groups.append(group)
+    return groups
+
+
+def score_resume(resume_data, jd_text, skills_map, years=0, jd_required=None):
     stemmer = Stemmer.Stemmer("english")
 
     resume_skills, resume_stemmed, resume_skills_in_cat, resume_skills_category = build_resume_skills(
@@ -228,7 +266,7 @@ def score_resume(resume_data, jd_text, skills_map):
                 matched_categories.add(cat)
             continue
 
-        fuzzy_result, fuzzy_score = fuzzy_match(jd_token, resume_skills, threshold=0.80)
+        fuzzy_result, fuzzy_score = fuzzy_match(jd_token, resume_skills, threshold=0.88)
         if fuzzy_result:
             cat = resume_skills_category.get(fuzzy_result, find_category(jd_token, skills_map))
             matched.append({
@@ -279,12 +317,79 @@ def score_resume(resume_data, jd_text, skills_map):
             missing_deduped.append(m)
     missing_deduped.sort(key=lambda x: -x["count"])
 
-    total_matched = len(matched)
-    total_jd_skills = len(matched) + len(missing)
-    if total_jd_skills > 0:
-        score = round((total_matched / total_jd_skills) * 100)
+    # --- Alternative groups: "any one of (e.g. A, B, C)" ---
+    alt_groups = extract_alternative_groups(jd_text, skills_map, stemmer)
+
+    term_status = {}
+    for m in matched:
+        if m["match_type"] == "exact_stem" or m["match_type"].startswith("fuzzy"):
+            term_status[m["term"]] = "owned"
+        elif m["match_type"] == "category":
+            term_status[m["term"]] = "category"
+    for m in missing_deduped:
+        term_status[m["term"]] = "missing"
+
+    satisfied_via_alt = set()
+    unsatisfied_alt_count = 0
+    alt_group_details = []
+
+    for group in alt_groups:
+        group_terms = group & set(term_status.keys())
+        if not group_terms or len(group_terms) < 2:
+            continue
+        owned = [t for t in group_terms if term_status[t] == "owned"]
+        if owned:
+            for t in group_terms:
+                if t not in owned:
+                    satisfied_via_alt.add(t)
+            alt_group_details.append({
+                "members": sorted(group_terms),
+                "satisfied_by": owned[0],
+                "status": "satisfied",
+            })
+        else:
+            for t in group_terms:
+                satisfied_via_alt.add(t)
+            unsatisfied_alt_count += 1
+            alt_group_details.append({
+                "members": sorted(group_terms),
+                "satisfied_by": None,
+                "status": "unsatisfied",
+            })
+
+    # Remove alternative-satisfied terms from matched/missing (they're handled as a group)
+    matched = [m for m in matched if m["term"] not in satisfied_via_alt]
+    missing_deduped = [m for m in missing_deduped if m["term"] not in satisfied_via_alt]
+
+    # --- Weighted scoring: owned=1.0, category=0.3, missing=1.0, weighted by JD frequency ---
+    weight_owned = 0
+    weight_partial = 0
+    weight_missing = 0
+
+    for m in matched:
+        if m["match_type"] == "exact_stem" or m["match_type"].startswith("fuzzy"):
+            weight_owned += m["count"]
+        elif m["match_type"] == "category":
+            weight_partial += m["count"] * 0.3
+
+    for m in missing_deduped:
+        weight_missing += m["count"]
+
+    weight_missing += unsatisfied_alt_count
+
+    total = weight_owned + weight_partial + weight_missing
+    if total > 0:
+        raw_score = (weight_owned + weight_partial) / total * 100
     else:
-        score = 0
+        raw_score = 0
+
+    # --- Experience penalty ---
+    exp_penalty = 0
+    if jd_required is not None and years < jd_required:
+        gap = jd_required - years
+        exp_penalty = min(8 + gap * 5, 15)
+
+    score = max(0, round(raw_score - exp_penalty))
 
     resume_skills_in_cat = {}
     for cat in skills_map:
@@ -297,12 +402,16 @@ def score_resume(resume_data, jd_text, skills_map):
 
     return {
         "score": min(score, 100),
+        "raw_score": round(raw_score),
+        "exp_penalty": exp_penalty,
         "matched": matched,
         "missing": missing_deduped,
         "matched_categories": matched_categories,
-        "total_jd_keywords": total_jd_skills,
-        "total_matched": total_matched,
+        "total_jd_keywords": len(matched) + len(missing_deduped) + unsatisfied_alt_count,
+        "total_matched": len(matched),
         "resume_skills_in_cat": resume_skills_in_cat,
+        "alternative_groups": alt_group_details,
+        "unsatisfied_alt_count": unsatisfied_alt_count,
     }
 
 
@@ -351,6 +460,8 @@ def format_report(result, experience_info, skills_map, verbose=False, report_pat
     if not verbose:
         lines.append(f"SCORE: {score}/100")
         lines.append(gradient_bar(score))
+        if result.get("exp_penalty"):
+            lines.append(f"  (raw {result.get('raw_score', score)}/100  -  exp penalty -{result['exp_penalty']})")
         lines.append("")
 
         if experience_info["jd_required"] is not None:
@@ -422,6 +533,8 @@ def format_report(result, experience_info, skills_map, verbose=False, report_pat
     bar = "█" * filled + "░" * empty
     lines.append(f"SCORE: {score}/100")
     lines.append(bar)
+    if result.get("exp_penalty"):
+        lines.append(f"  (raw {result.get('raw_score', score)}/100  -  exp penalty -{result['exp_penalty']})")
     lines.append("")
 
     lines.append(f"MATCHED KEYWORDS ({result['total_matched']}/{result['total_jd_keywords']})")
@@ -486,6 +599,17 @@ def format_report(result, experience_info, skills_map, verbose=False, report_pat
             lines.append(f"    Missing:  {terms_str}")
         lines.append("")
 
+    alt_groups = result.get("alternative_groups", [])
+    if alt_groups:
+        lines.append(f"ALTERNATIVE GROUPS ({len(alt_groups)}) — \"any one of\" requirements")
+        for ag in alt_groups:
+            members = ", ".join(ag["members"])
+            if ag["status"] == "satisfied":
+                lines.append(f"  ✓ [{members}] — satisfied by: {ag['satisfied_by']}")
+            else:
+                lines.append(f"  ✗ [{members}] — NOT satisfied (none in resume)")
+        lines.append("")
+
     lines.append("RECOMMENDATIONS")
     high_freq_missing = [m for m in result["missing"] if m["count"] >= 2]
     if high_freq_missing:
@@ -539,7 +663,7 @@ def main():
     jd_required = extract_required_years(jd_text)
 
     log("⟳ Scoring resume against JD...")
-    result = score_resume(resume_data, jd_text, skills_map)
+    result = score_resume(resume_data, jd_text, skills_map, years=years, jd_required=jd_required)
 
     experience_info = {
         "your_experience": (years, months),
